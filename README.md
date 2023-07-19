@@ -20,7 +20,7 @@
 
 * [javadoc к данному проекту](https://Webkonditer.github.io/ad_service/)
 
-* [описание работы приложения](https://github.com/Webkonditer/ad_service/wiki)
+* [описание работы приложения](https://github.com/AIvachkin/ad_service/wiki)
 
 ### В проекте принимает участие команда разработчиков "Волна":
 
