@@ -48,12 +48,6 @@ public class AdsService {
     }
 
 
-//    Метод не используется. Нужен?
-    public AdsDto getById(Integer adsId) {
-        log.info("Was invoked method for get adsDto by id");
-        Ads ad = adsRepository.findById(adsId).get();
-        return adsMapper.toAdsDto(ad, ad.getUser(), ad.getImage());
-    }
 
     /**
      * Метод для получения всех объявлений всех пользователей
