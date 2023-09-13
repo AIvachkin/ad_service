@@ -20,7 +20,6 @@ import ru.skypro.homework.repository.AdsRepository;
 import ru.skypro.homework.repository.CommentsRepository;
 import ru.skypro.homework.service.AdsService;
 import ru.skypro.homework.service.ImagesService;
-import ru.skypro.homework.service.UserService;
 
 import java.io.IOException;
 
@@ -33,18 +32,15 @@ import java.io.IOException;
 public class AdsController {
     private final AdsService adsService;
     private final CommentsRepository commentsRepository;
-    private final UserService userService;
 
     private final AdsRepository adsRepository;
     private final ImagesService imagesService;
 
     public AdsController(AdsService adsService,
                          CommentsRepository commentsRepository,
-                         UserService userService,
                          AdsRepository adsRepository, ImagesService imagesService) {
         this.adsService = adsService;
         this.commentsRepository = commentsRepository;
-        this.userService = userService;
         this.adsRepository = adsRepository;
         this.imagesService = imagesService;
     }
