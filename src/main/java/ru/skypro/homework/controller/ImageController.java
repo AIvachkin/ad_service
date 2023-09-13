@@ -6,15 +6,10 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import ru.skypro.homework.dto.adsDto.AdsByIdDto;
-import ru.skypro.homework.dto.adsDto.AdsDto;
 import ru.skypro.homework.model.Ads;
 import ru.skypro.homework.model.Images;
 import ru.skypro.homework.repository.AdsRepository;
-import ru.skypro.homework.service.ImagesService;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -30,12 +25,9 @@ import java.nio.file.Path;
 @RestController
 @RequestMapping("/image")
 public class ImageController {
-    private final ImagesService imagesService;
     private final AdsRepository adsRepository;
 
-    public ImageController(ImagesService imagesService,
-                           AdsRepository adsRepository) {
-        this.imagesService = imagesService;
+    public ImageController(AdsRepository adsRepository) {
         this.adsRepository = adsRepository;
     }
 
@@ -63,7 +55,7 @@ public class ImageController {
         Images images = ads.getImage();
         Path path = Path.of(images.getImage());
         try (InputStream is = Files.newInputStream(path);
-             OutputStream os = response.getOutputStream();) {
+             OutputStream os = response.getOutputStream()) {
             response.setStatus(200);
             response.setContentType(images.getMediaType());
             response.setContentLength(images.getFileSize().intValue());

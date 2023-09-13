@@ -3,22 +3,20 @@ package ru.skypro.homework.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import ru.skypro.homework.Role;
 
 import javax.persistence.*;
 import java.time.Instant;
 import java.util.Collection;
-import java.util.Set;
 
 /**
- * Класс - сущность пользователя
+ * Класс - сущность пользователь
  */
 @Data
 @Entity
 public class Users {
 
     /**
-     * Поле - id пользователя/автора объявления
+     * id пользователя/автора объявления
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,44 +24,44 @@ public class Users {
     private Integer id;
 
     /**
-     * Поле - адрес электронной почты автора объявления
+     * Адрес электронной почты автора объявления
      */
     @Column(name="username")
     private String email;
 
     /**
-     * Поле - пароль пользователя
+     * Пароль пользователя
      */
     private String password;
 
     /**
-     * Поле - имя автора объявления/комментария
+     * Имя автора объявления/комментария
      */
     private String firstName;
 
     /**
-     * Поле - фамилия автора объявления/комментария
+     * Фамилия автора объявления/комментария
      */
     private String lastName;
 
     /**
-     * Телефон
+     * Телефон пользователя
      */
     private String phone;
 
     /**
-     * Дата регистрации
+     * Дата регистрации пользователя
      */
     @JsonIgnore
     private Instant regDate;
 
     /**
-     * Город
+     * Город проживания пользователя
      */
     private String city;
 
     /**
-     * Поле - аватарка
+     * Аватар пользователя
      */
     @OneToOne
     @JoinColumn(name = "avatar_id")

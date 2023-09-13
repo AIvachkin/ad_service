@@ -10,25 +10,25 @@ import lombok.*;
 @NoArgsConstructor
 public class AdsCreateDto {
     /**
-     * Поле - описание объявления
+     * Описание объявления
      * */
     @NotNull
     private String description;
 
     /**
-     * Поле - цена товара
+     * Цена товара
      * */
     @NotNull
     private Integer price;
 
     /**
-     * Поле - заголовок объявления
+     * Заголовок объявления
      * */
     @NotNull
     private String title;
 
     /**
-     * Поле - id автора объявления
+     * id автора объявления
      * */
     private Integer author;
 }

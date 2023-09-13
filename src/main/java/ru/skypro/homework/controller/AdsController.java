@@ -189,12 +189,7 @@ public class AdsController {
                                                  @PathVariable Integer adPk,
                                                  @Parameter(description = "id комментария", example = "2")
                                                  @PathVariable Integer id) {
-        if (true) {
             return ResponseEntity.ok(adsService.getComment(adPk, id));
-        } else if (false) {
-            return ResponseEntity.status(404).build();
-        }
-        return null;
     }
 
 

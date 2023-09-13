@@ -11,16 +11,14 @@ import ru.skypro.homework.dto.PasswordDto;
 import ru.skypro.homework.dto.UserDto;
 import ru.skypro.homework.model.Avatars;
 import ru.skypro.homework.model.Users;
-import ru.skypro.homework.repository.AdsRepository;
 import ru.skypro.homework.repository.AvatarsRepository;
-import ru.skypro.homework.repository.ImagesRepository;
 import ru.skypro.homework.repository.UserRepository;
-import ru.skypro.homework.service.mapper.AdsMapper;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Instant;
+import java.util.Objects;
 
 import static java.nio.file.StandardOpenOption.CREATE_NEW;
 
@@ -35,7 +33,7 @@ public class UserService {
     private final AvatarsRepository avatarsRepository;
     private final UserDetailsManager manager;
 
-    public UserService(AdsRepository adsRepository, UserRepository userRepository, AdsMapper adsMapper, ImagesRepository imagesRepository, AvatarsRepository avatarsRepository, UserDetailsManager manager) {
+    public UserService(UserRepository userRepository, AvatarsRepository avatarsRepository, UserDetailsManager manager) {
         this.userRepository = userRepository;
         this.avatarsRepository = avatarsRepository;
         this.manager = manager;
@@ -47,9 +45,7 @@ public class UserService {
      */
     public Users getAuthorizedUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        //if (!(authentication instanceof AnonymousAuthenticationToken)) {
             String currentUserName = authentication.getName();
-        // }
         Users user = userRepository.findByEmail(currentUserName);
         if(user == null){
             log.info("User not found");
@@ -104,7 +100,6 @@ public class UserService {
      * Метод обновляет иконку текущего пользователя
      * @param image картинка из фронтв
      * @return true или false
-     * @throws IOException
      */
     public Boolean updateUserImage(MultipartFile image) throws IOException {
         Users user = getAuthorizedUser();
@@ -112,14 +107,14 @@ public class UserService {
             log.info("User not found");
             return false;
         }
-        Path filePath = Path.of("/avatars", user.getId() + "_avatar." + getExtensions(image.getOriginalFilename()));
+        Path filePath = Path.of("/avatars", user.getId() + "_avatar." + getExtensions(Objects.requireNonNull(image.getOriginalFilename())));
         Files.createDirectories(filePath.getParent());
         Files.deleteIfExists(filePath);
         try (
                 InputStream is = image.getInputStream();
                 OutputStream os = Files.newOutputStream(filePath, CREATE_NEW);
                 BufferedInputStream bis = new BufferedInputStream(is, 1024);
-                BufferedOutputStream bos = new BufferedOutputStream(os, 1024);
+                BufferedOutputStream bos = new BufferedOutputStream(os, 1024)
         ) {
             bis.transferTo(bos);
         }
@@ -140,8 +135,8 @@ public class UserService {
 
     /**
      * Метод возвращает расширение файла
-     * @param fileName
-     * @return
+     * @param fileName имя файла
+     * @return расширение файла
      */
     private String getExtensions(String fileName) {
         return fileName.substring(fileName.lastIndexOf(".") + 1);

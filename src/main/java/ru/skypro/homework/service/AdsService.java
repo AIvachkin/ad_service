@@ -1,7 +1,6 @@
 package ru.skypro.homework.service;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -48,10 +47,8 @@ public class AdsService {
     }
 
 
-
     /**
      * Метод для получения всех объявлений всех пользователей
-     *
      */
     public AdsAllDto getAllAds() {
         return adsMapper.toAdsAllDto(adsRepository);
@@ -59,7 +56,6 @@ public class AdsService {
 
     /**
      * Метод для получения всех объявлений пользователя-автора объявлений
-     *
      */
     public AdsMeDto getAllAdsMe() {
         Integer id = userService.getAuthorizedUser().getId();
@@ -104,7 +100,6 @@ public class AdsService {
     public CommentDto getComment(Integer adPk, Integer id) {
         log.info("Was invoked method for get Comments by adId and commentId");
         Users user = userService.getAuthorizedUser();
-//        Users user = userRepository.findById(id).orElse(null);
         Comments comment = commentsRepository.findByAd_PkAndPk(adPk, id);
 
 
@@ -233,8 +228,9 @@ public class AdsService {
     }
 
     /**
-     * Метод проверяет полномочия на внесение изиенений или удаление объявления
-     * @param id - ид объявления
+     * Метод проверяет полномочия на внесение изменений или удаление объявления
+     *
+     * @param id id объявления
      */
     public boolean checkGrantesForAds(Integer id) {
         Ads ad = adsRepository.findAdsByPk(id);
@@ -249,8 +245,9 @@ public class AdsService {
     }
 
     /**
-     * Метод проверяет полномочия на внесение изиенений или удаление комментария
-     * @param comment - сущность комментария
+     * Метод проверяет полномочия на внесение изменений или удаление комментария
+     *
+     * @param comment комментарий
      */
     public boolean checkGrantesForComments(Comments comment) {
 

@@ -15,7 +15,7 @@ public class Ads {
 
 
     /**
-     * Поле - primary key - идентификатор объявления
+     * id объявления
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,44 +24,42 @@ public class Ads {
 
 
     /**
-     * Поле - связь объявление с сущностью User
+     * Связь объявление с сущностью User
      */
     @ManyToOne
-//    @JsonIgnore
     @JoinColumn(name = "user_id")
     private Users user;
 
 
     /**
-     * Поле - картинка - визуализация объявления
+     * Картинка - визуализация объявления
      */
     @OneToOne
-//    @JsonIgnore
     @JoinColumn(name = "image_id")
     private Images image;
 
     /**
-     * Поле - описание объявления
+     * Описание объявления
      */
     private String description;
 
     /**
-     * Поле - цена товара/услуги из объявления
+     *Цена товара/услуги из объявления
      */
     private Integer price;
 
     /**
-     * Поле - заголовок объявления
+     *Заголовок объявления
      */
     private String title;
 
     /**
-     * Поле - время создания объявления
+     * Время создания объявления
      */
     private Instant createdAt;
 
     /**
-     * Поле - список комментариев/отзывов пользователя
+     *Список комментариев/отзывов пользователя
      */
     @OneToMany(mappedBy = "ad", cascade = CascadeType.REMOVE)
     private List<Comments> comments;
