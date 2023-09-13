@@ -8,18 +8,22 @@ import ru.skypro.homework.dto.CommentDto;
 
 import java.util.List;
 
+/**
+ * ДТО - список объявлений, содержащий в т.ч. и их количество
+ *
+ */
 @Data
 @Builder
 public class AdsCommentsDto {
 
 
     /**
-     * Поле - счетчик комментариев
+     * Счетчик комментариев
      */
     private Integer count;
 
     /**
-     * Поле - массив размещенных объявлений
+     * Массив размещенных объявлений
      */
     @JsonProperty("results")
     private List<CommentDto> allResults;

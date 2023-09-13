@@ -12,6 +12,10 @@ import javax.sql.DataSource;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
+/**
+ * Класс - конфигурация безопасности
+ *
+ */
 @Configuration
 @EnableWebSecurity
 @EnableAutoConfiguration

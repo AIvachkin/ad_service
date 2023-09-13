@@ -9,27 +9,27 @@ import lombok.*;
 @NoArgsConstructor
 public class AdsDto {
     /**
-     * Поле - id автора объявления
+     * id автора объявления
      * */
     private Integer author;
 
     /**
-     * Поле - ссылка на картинку объявления
+     * Ссылка на картинку объявления
      */
     private String image;
 
     /**
-     * Поле - идентификатор объявления
+     * id объявления
      */
     private Integer pk;
 
     /**
-     * Поле - цена товара
+     * Цена товара
      * */
     private Integer price;
 
     /**
-     * Поле - заголовок объявления
+     * Заголовок объявления
      * */
     private String title;
 }

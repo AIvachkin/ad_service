@@ -7,17 +7,21 @@ import lombok.Builder;
 
 import java.util.List;
 
+/**
+ * ДТО - список всех объявлений пользователя
+ *
+ */
 @Data
 @Builder
 public class AdsMeDto {
 
     /**
-     * Поле - id автора объявления
+     * id автора объявления
      * */
     private Integer author;
 
     /**
-     * Поле - список всех объявлений
+     * Список всех объявлений
      */
     @JsonProperty("results")
     private List<AdsDto> allResults;

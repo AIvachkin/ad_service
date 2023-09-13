@@ -27,9 +27,8 @@ public class AuthController {
     private final AuthService authService;
 
     /**
-     * Ендпоинт для аутентификации пользователя
-     * @param req
-     * @return
+     * Аутентификация пользователя
+     * @param req ДТО - логин пользователя
      */
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginReq req) {
@@ -41,9 +40,8 @@ public class AuthController {
     }
 
     /**
-     * Ендпоинт для регистрации нового пользователя
-     * @param req
-     * @return
+     * Регистрация нового пользователя
+     * @param req ДТО - регистрационные данные пользователя
      */
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegisterReq req) {

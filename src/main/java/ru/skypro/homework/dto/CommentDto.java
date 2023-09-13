@@ -2,33 +2,32 @@ package ru.skypro.homework.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import lombok.Builder;
 
 /**
- * DTO коментария
+ * DTO - комментарий
  * */
 @Data
 @NoArgsConstructor
 public class CommentDto {
 
     /**
-     * Поле - id автора комментария
+     * id автора комментария
      * */
     @JsonProperty("author")
     private Integer id;
 
     /**
-     * Поле - время создания комментария
+     * Время создания комментария
      * */
     private String createdAt;
 
     /**
-     * Поле - идентификатор объявления
+     * id объявления
      */
     private Integer pk;
 
     /**
-     * Поле - текст комментария
+     * Текст комментария
      * */
     private String text;
 }

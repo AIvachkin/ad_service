@@ -3,53 +3,57 @@ package ru.skypro.homework.dto.adsDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+/**
+ * ДТО - данные об авторе и самом объявлении
+ *
+ */
 @Data
 public class AdsByIdDto {
 
     /**
-     * Поле - ссылка на картинку объявления
+     * Ссылка на картинку объявления
      */
     private String image;
 
     /**
-     * Поле - фамилия автора объявления
+     * Фамилия автора объявления
      */
     @JsonProperty("authorLastName")
     private String lastName;
 
     /**
-     * Поле - имя автора объявления
+     * Имя автора объявления
      */
     @JsonProperty("authorFirstName")
     private String firstName;
 
     /**
-     * Поле - телефон автора объявления
+     * Телефон автора объявления
      */
     private String phone;
 
     /**
-     * Поле - цена товара/услуги из объявления
+     * Цена товара/услуги из объявления
      */
     private Integer price;
 
     /**
-     * Поле - описание объявления
+     * Описание объявления
      */
     private String description;
 
     /**
-     * Поле - primary key - идентификатор объявления
+     * id объявления
      */
     private Integer pk;
 
     /**
-     * Поле - заголовок объявления
+     * Заголовок объявления
      */
     private String title;
 
     /**
-     * Поле - адрес эл.почты автора объявления
+     * Адрес эл.почты автора объявления
      */
     private String email;
 

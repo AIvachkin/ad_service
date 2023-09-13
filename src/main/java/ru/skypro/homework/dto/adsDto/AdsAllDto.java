@@ -5,8 +5,11 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
-import java.util.stream.DoubleStream;
 
+/**
+ * ДТО - список объявлений
+ *
+ */
 @Data
 @Builder
 public class AdsAllDto {

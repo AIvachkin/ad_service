@@ -1,7 +1,6 @@
 package ru.skypro.homework.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -9,11 +8,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import ru.skypro.homework.dto.CommentDto;
 import ru.skypro.homework.dto.PasswordDto;
 import ru.skypro.homework.dto.UserDto;
-import ru.skypro.homework.dto.adsDto.AdsAllDto;
-import ru.skypro.homework.dto.adsDto.AdsDto;
 import ru.skypro.homework.model.Avatars;
 import ru.skypro.homework.model.Images;
 import ru.skypro.homework.model.Users;
@@ -179,7 +175,7 @@ public class UserController {
         Avatars avatar = user.getAvatar();
         Path path = Path.of(avatar.getAvatar());
         try (InputStream is = Files.newInputStream(path);
-             OutputStream os = response.getOutputStream();) {
+             OutputStream os = response.getOutputStream()) {
             response.setStatus(200);
             response.setContentType(avatar.getMediaType());
             response.setContentLength(avatar.getFileSize().intValue());

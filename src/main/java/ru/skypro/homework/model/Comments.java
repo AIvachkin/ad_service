@@ -6,13 +6,16 @@ import lombok.Data;
 import javax.persistence.*;
 import java.time.Instant;
 
+/**
+ * Класс - сущность комментарий к объявлению
+ */
 @Data
 @Entity
 public class Comments {
 
 
     /**
-     * Поле - primary key - идентификатор комментария
+     * id комментария
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,26 +23,25 @@ public class Comments {
     private Integer pk;
 
     /**
-     * Поле - время создания комментария
+     * Время создания комментария
      */
-//    @JsonIgnore
     private Instant createdAt;
 
     /**
-     * Поле - комментарий пользователя/отзыв
+     * Комментарий пользователя/отзыв
      */
     @Column(name="comment_text")
     private String text;
 
     /**
-     * Поле - id пользователя
+     * id пользователя
      */
     @ManyToOne
     @JoinColumn(name = "user_id")
     private Users user;
 
     /**
-     * Поле - id объявления
+     * id объявления
      */
     @ManyToOne
     @JoinColumn(name = "ad_id")

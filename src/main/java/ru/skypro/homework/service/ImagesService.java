@@ -67,7 +67,6 @@ public class ImagesService {
      * @param image картинка из фронта
      * @param id    - id объявления
      * @return true или false
-     * @throws IOException
      */
     public Boolean updateAdsImage(MultipartFile image, Integer id) throws IOException {
 
@@ -84,7 +83,7 @@ public class ImagesService {
                 InputStream is = image.getInputStream();
                 OutputStream os = Files.newOutputStream(filePath, CREATE_NEW);
                 BufferedInputStream bis = new BufferedInputStream(is, 1024);
-                BufferedOutputStream bos = new BufferedOutputStream(os, 1024);
+                BufferedOutputStream bos = new BufferedOutputStream(os, 1024)
         ) {
             bis.transferTo(bos);
         }
@@ -107,8 +106,8 @@ public class ImagesService {
     /**
      * Метод возвращает расширение файла
      *
-     * @param fileName
-     * @return
+     * @param fileName имя файла
+     * @return расширение файла
      */
     private String getExtensions(String fileName) {
         return fileName.substring(fileName.lastIndexOf(".") + 1);
